@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flujo de escritura con alert y write</title>
+</head>
+<body>
+
+<!-- Texto1 escrito directamente en HTML -->
+<h1>Texto1 escrito directamente en HTML</h1>
+
+<script>
+  // Primer modal: se detiene todo
+  alert("3");
+
+  // Estos se muestran después de cerrar el alert(3)
+  document.write("<h2>Texto2. Mensaje escrito desde JavaScript utilizando write()</h2>");
+  document.write("<p>Texto3: El texto no pisa al documento porque aún no terminó el flujo de escritura del navegador</p>");
+
+  // Segundo modal: aparece inmediatamente después de mostrar Texto1, Texto2 y Texto3
+  alert("6");
+</script>
+
+<!-- Estos se muestran después de cerrar el segundo modal -->
+<h3>Texto4 escrito en HTML después de presentar el alert(6).</h3>
+
+<script>
+  document.write("<h3>Texto5. Otra escritura con método write() aplicado al documento.</h3>");
+  document.write("<p>El texto escrito con write no pisa al documento porque aún no terminó el flujo de escritura del navegador.</p>");
+  document.write("<p>Texto6. El flujo de escritura sobre el navegador termina un tiempo después de la última línea y tras cerrar todas las ventanas modales de tipo alert().</p>");
+</script>
+
+</body>
+</html>
+

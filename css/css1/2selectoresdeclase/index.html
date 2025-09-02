@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo Selectores de Clase</title>
+    <style>
+        /* Estilo general para todos los párrafos */
+        p {
+            font-size: 1em;
+            margin-bottom: 60px;
+        }
+        
+        /* Clase para resaltar texto */
+        .claseResaltado {
+            font-size: 1em;
+            font-weight: bold;
+            background-color: yellow;
+        }
+        
+        /* Clase de ayuda */
+        .claseAyuda {
+            font-style: italic;
+            color: orange;
+            border: 1px solid orange;
+            padding: 5px;
+        }
+        
+        /* Clase contenido común */
+        .claseContenidoComun {
+            font-size: 1em;
+            color: black;
+        }
+        
+        /* Estilo para id único */
+        #idUnico {
+            font-weight: bold;
+            font-style: italic;
+            color: red;
+            border: 2px solid red;
+            padding: 10px;
+            background-color: #fdfdfd;
+        }
+        
+        /* Imagen limitada al 50% del contenedor */
+        .imagenAl50 {
+            width: 50%;
+            display: block;
+            margin: 20px 0;
+        }
+        
+        /* Párrafo azul encima de la imagen */
+        .textoAzul {
+            color: blue;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selectores de clase</h1>
+    
+    <p class="claseResaltado">
+        Este párrafo toma el estilo definido en la etiqueta style en el header del documento como class="claseResaltado"
+    </p>
+    
+    <p class="claseAyuda">
+        Este párrafo toma el estilo definido en la etiqueta style en el header del documento como class="claseAyuda"
+    </p>
+    
+    <p class="claseContenidoComun">
+        Este párrafo toma el estilo definido en la etiqueta style en el header del documento como class="claseContenidoComun"
+    </p>
+    
+    <p id="idUnico">
+        Párrafo formateado por un estilo particular definido en el style del documento para un párrafo específico id="idUnico". No se trata de un selector de clase sino de un selector de elemento "#"
+    </p>
+    
+    <p class="textoAzul">Todas las imágenes con class="imagenAl50" en esta página se encuentran limitadas al 50% del ancho del contenedor más allá de su tamaño real en pixeles:</p>
+    
+    <img src="Bauhaus.jpg" class="imagenAl50" alt="Ejemplo de imagen">
+</body>
+</html>

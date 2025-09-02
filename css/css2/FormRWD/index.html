@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario RWD</title>
+  <style>
+    
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      background-color: #ccc;
+    }
+
+    main {
+      flex: 1; 
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      padding: 20px;
+      background-color: #ccc;
+    }
+
+    .control {
+      border: 1px solid gray;
+      padding: 10px;
+      background: #e0e0e0;
+    }
+
+    h2 {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: teal;
+      color: white;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .botones {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+    }
+
+    .botones button {
+      width: 40%;
+      padding: 15px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      background: teal;
+      color: white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <form>
+      <h2>Formulario</h2>
+
+      <div class="control">1 Apellido:<br><input type="text"></div>
+      <div class="control">2 Nombres:<br><input type="text"></div>
+      <div class="control">3 Contraseña:<br><input type="password"></div>
+      <div class="control">4 Campo deshabilitado:<br><input type="text" disabled value="valor deshabilitado"></div>
+      <div class="control">5 Fecha:<br><input type="date"></div>
+      <div class="control">6 DNI:<br><input type="text"></div>
+      <div class="control">
+        7 Actividades:<br>
+        <label><input type="checkbox"> Musica</label><br>
+        <label><input type="checkbox"> Futbol</label>
+      </div>
+      <div class="control">
+        8 Sexo:<br>
+        <label><input type="radio" name="sexo"> Masculino</label><br>
+        <label><input type="radio" name="sexo"> Femenino</label>
+      </div>
+      <div class="control"><strong>9 Vacío</strong></div>
+      <div class="control">10 Estudios cursados:<br>
+        <select><option>Primarios</option><option>Secundarios</option><option>Universitarios</option></select>
+      </div>
+      <div class="control">11 Área de desempeño:<br>
+        <select><option>Administración</option><option>Ventas</option><option>Sistemas</option></select>
+      </div>
+      <div class="control">12 Turno:<br>
+        <select><option>Mañana</option><option>Tarde</option><option>Noche</option></select>
+      </div>
+      <div class="control">13 Conduce:<br>
+        <label><input type="radio" name="conduce"> Sí</label>
+        <label><input type="radio" name="conduce"> No</label>
+      </div>
+
+      <div class="botones">
+        <button type="submit">Enviar</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </main>
+
+  <footer>Pie de formulario</footer>
+</body>
+</html>
+

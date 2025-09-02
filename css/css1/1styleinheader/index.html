@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo 1 - Estilos CSS</title>
+    <style>
+        body {
+            font-size: 1em; 
+        }
+
+        h1 {
+            font-size: 2em;
+            color: darkblue;             
+            text-align: center;                       
+            background-color: aquamarine;
+        }
+
+        p {
+            text-align: left;            
+            font-size: 1em;             
+            color: blue;                 
+            font-style: italic;          
+            border-top-style: solid;
+            border-bottom-style: solid;
+            border-width: thin;
+            border-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Declaraciones en bloque definidas entre etiquetas style</h1>
+
+    <pre>
+h1 {
+    font-size: 2em;
+    color: darkblue;
+    text-align: center;
+    background-color: aquamarine;
+}
+    </pre>
+
+    <h1>Todos los textos con etiquetas h1 tienen este estilo.</h1>
+    <h1>La etiqueta h1 ocupa todo el ancho del contenedor (display: block).</h1>
+    <h1>La etiqueta h1 lleva texto en azul oscuro.</h1>
+    <h1>El background de un h1 lleva color aquamarine.</h1>
+    <h1>El estilo definido para la etiqueta h1 indica que el texto irá centrado.</h1>
+
+    <pre>
+p {
+    text-align: left;
+    font-size: 1em;
+    color: blue;
+    font-style: italic;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: thin;
+    border-color: blue;
+}
+    </pre>
+    <p>Todos los textos con etiquetas p tienen este estilo definido dentro de la etiqueta style.</p>
+    <p>Para los párrafos se define un estilo con estas características. Alineación a la izquierda.</p>
+    <p>Tamaño de letra de la misma medida que la definida para el contenedor body.</p>
+    <p>Color de letra azul distinto al de h1.</p>
+    <p>Estilo de la fuente itálico.</p>
+    <p>Bordes superior e inferior sólidos, finos y del mismo color.</p>
+</body>
+</html>
