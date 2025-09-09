@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>j05_4_traducción</title>
+  <style>
+    body { margin: 0; font-family: "Times New Roman", serif; }
+    .wrap { text-align: center; margin-top: 80px; }
+    .big  { font-size: 72px; font-weight: 400; display: inline-block; }
+    .small{ font-size: 32px; margin-left: 16px; }
+  </style>
+</head>
+<body>
+  <div id="contenedor" class="wrap"></div>
+
+  <script>
+    window.addEventListener("load", function () {
+      const lenguajes = window.navigator.languages; 
+      const codigo = lenguajes[0].substr(0, 2);  
+
+      var html = "";
+      if (codigo === "es") {
+        html  = "<h1 class='big'>HOLA PROFESOR</h1>";
+        html += "<span class='small'>Hola clase</span>";
+      } else {
+        html  = "<h1 class='big'>HELLO PROFESOR</h1>";
+        html += "<span class='small'>Hello class</span>";
+      }
+
+      document.getElementById("contenedor").innerHTML = html;
+    });
+  </script>
+</body>
+</html>

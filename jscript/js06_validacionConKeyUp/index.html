@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Validación con onKeyUp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .contenedor {
+      width: 50%;
+      margin: 0 auto;
+      background-color: #add8e6; /* Azul claro */
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+    input[type="text"] {
+      padding: 5px;
+      width: 60px;
+      text-align: center;
+    }
+    .botones {
+      margin-top: 20px;
+    }
+    .botones input {
+      padding: 8px 16px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Ejer validación de un INPUT de formulario en el evento de onKeyUp</h2>
+  <div class="contenedor">
+    <!-- Formulario que envía datos a respuesta.html -->
+    <form id="formulario" action="respuesta.html" method="get">
+      <div>
+        <label for="dia">Ingrese el día del mes:</label><br>
+        <input type="text" id="dia" name="diaDelMes" onkeyup="validarDia()"><br><br>
+
+        <label for="mes">Ingrese el mes:</label><br>
+        <input type="text" id="mes" name="mes" onkeyup="validarMes()"><br>
+      </div>
+
+      <div class="botones">
+        <input type="submit" value="Enviar">
+        <input type="button" value="Reset" onclick="resetearFormulario()">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // ==========================
+    // VALIDAR DÍA
+    // ==========================
+    function validarDia() {
+      var valorDia = document.getElementById("dia").value;
+
+      // Si no es número, limpiar
+      if (isNaN(valorDia)) {
+        alert("Por favor ingrese un número válido para el día.");
+        document.getElementById("dia").value = "";
+        return;
+      }
+
+      // Convertir a entero
+      var dia = parseInt(valorDia, 10);
+
+      // Validar rango 1-31
+      if (dia < 1 || dia > 31) {
+        alert("El día debe estar entre 1 y 31.");
+        document.getElementById("dia").value = "";
+      }
+    }
+
+    // ==========================
+    // VALIDAR MES
+    // ==========================
+    function validarMes() {
+      var valorMes = document.getElementById("mes").value;
+
+      // Si no es número, limpiar
+      if (isNaN(valorMes)) {
+        alert("Por favor ingrese un número válido para el mes.");
+        document.getElementById("mes").value = "";
+        return;
+      }
+
+      // Convertir a entero
+      var mes = parseInt(valorMes, 10);
+
+      // Validar rango 1-12
+      if (mes < 1 || mes > 12) {
+        alert("El mes debe estar entre 1 y 12.");
+        document.getElementById("mes").value = "";
+      }
+    }
+
+    // ==========================
+    // RESETEAR FORMULARIO
+    // ==========================
+    function resetearFormulario() {
+      // Resetea todo el formulario completo
+      document.getElementById("formulario").reset();
+    }
+  </script>
+</body>
+</html>

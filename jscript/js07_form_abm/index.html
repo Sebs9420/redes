@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario ABM</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #b2f0e8;
+    }
+    #form-container {
+      background: #c0d8e0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+    }
+    .btns {
+      margin-top: 15px;
+      text-align: center;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="form-container">
+  <h2>FORMULARIO ABM</h2>
+  <form id="formABM">
+    <label>Apellido:</label>
+    <input type="text" id="apellido" required minlength="2">
+
+    <label>Nombres:</label>
+    <input type="text" id="nombres" required minlength="2">
+
+    <label>Saldo:</label>
+    <input type="number" id="saldo" required min="20000" max="30000">
+
+    <div class="btns">
+      <button type="button" id="btnBlanquear" disabled>Blanquear</button>
+      <button type="button" id="btnAlta" disabled>Alta</button>
+      <button type="button" id="btnModi" disabled>Modi</button>
+      <button type="button" id="btnBaja" disabled>Baja</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById("formABM");
+  const btnBlanquear = document.getElementById("btnBlanquear");
+  const btnAlta = document.getElementById("btnAlta");
+  const btnModi = document.getElementById("btnModi");
+  const btnBaja = document.getElementById("btnBaja");
+
+  // Función para validar botones
+  function validarFormulario() {
+    // Si hay algo escrito en cualquier input → habilitamos Blanquear
+    const hayTexto = [...form.querySelectorAll("input")].some(input => input.value.trim() !== "");
+    btnBlanquear.disabled = !hayTexto;
+
+    // Si todo el formulario es válido → habilitamos ABM
+    if (form.checkValidity()) {
+      btnAlta.disabled = false;
+      btnModi.disabled = false;
+      btnBaja.disabled = false;
+    } else {
+      btnAlta.disabled = true;
+      btnModi.disabled = true;
+      btnBaja.disabled = true;
+    }
+  }
+
+  // Eventos keyup en inputs
+  document.getElementById("apellido").addEventListener("keyup", validarFormulario);
+  document.getElementById("nombres").addEventListener("keyup", validarFormulario);
+  document.getElementById("saldo").addEventListener("keyup", validarFormulario);
+
+  // Botón Blanquear
+  btnBlanquear.addEventListener("click", () => {
+    form.reset();
+    validarFormulario();
+  });
+
+  // Botones ABM → abren páginas en nueva pestaña
+  btnAlta.addEventListener("click", () => {
+    window.open("alta.html", "_blank");
+  });
+  btnModi.addEventListener("click", () => {
+    window.open("modi.html", "_blank");
+  });
+  btnBaja.addEventListener("click", () => {
+    window.open("baja.html", "_blank");
+  });
+</script>
+
+</body>
+</html>

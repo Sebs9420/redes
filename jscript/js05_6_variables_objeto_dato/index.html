@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Variable de tipo objeto</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background-color: #f9f9f9;
+    }
+
+    #contenedor {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 20px auto;
+      gap: 20px;
+    }
+
+    .panel {
+      flex: 1;
+      background-color: #e6f2ff;
+      border: 2px solid lightblue;
+      padding: 15px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+
+    #control {
+      max-width: 220px;
+      text-align: center;
+      background-color: #e6f2ff;
+    }
+
+    #control button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    #control button:hover {
+      background-color: #cce0ff;
+    }
+
+    #presentacion {
+      margin: 20px auto;
+      width: 90%;
+      display: none; 
+      background-color: #e6f2ff;
+      border: 2px solid lightblue;
+      padding: 15px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+
+    /* Estilo tabla */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #d9e1f2;
+    }
+  </style>
+</head>
+<body>
+  <h2>Variable de tipo objeto</h2>
+
+  <div id="contenedor">
+    <div id="formulario" class="panel">
+      <h3>Ingreso de datos de persona</h3>
+      <label>Nombre:</label><br>
+      <input type="text" id="nombre"><br><br>
+      
+      <label>Apellido:</label><br>
+      <input type="text" id="apellido"><br><br>
+      
+      <label>Fecha de Nacimiento:</label><br>
+      <input type="date" id="fecha"><br>
+    </div>
+
+    <div id="control" class="panel">
+      <h3>Control</h3>
+      <button onclick="crearPersona()">Crear persona</button>
+      <button onclick="mostrarPersonas()">Listar personas</button>
+      <button onclick="ocultarPresentacion()">Ocultar presentación</button>
+    </div>
+  </div>
+
+  <div id="presentacion"></div>
+
+  <script>
+    var objetoPersonas = { personas: [] };
+
+    objetoPersonas.personas.push({nombre:"Lionel", apellido:"Messi", fechaNac:"24-07-1987"});
+    objetoPersonas.personas.push({nombre:"Lionel", apellido:"Scaloni", fechaNac:"16-05-1978"});
+
+    function formatearFecha(fecha) {
+      if (!fecha) return '';
+
+      const partes = fecha.split('-');
+
+      if (partes.length === 3) {
+        return `${partes[2]}-${partes[1]}-${partes[0]}`;
+      }
+      return fecha; 
+    }
+
+    function validarCampos(nombre, apellido, fecha) {
+      if (nombre === "" || apellido === "" || fecha === "") {
+        alert("Todos los campos son obligatorios.");
+        return false;
+      }
+      return true;
+    }
+
+    function crearPersona() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const apellido = document.getElementById("apellido").value.trim();
+      let fecha = document.getElementById("fecha").value;
+
+      if (!validarCampos(nombre, apellido, fecha)) return;
+        
+      fecha = formatearFecha(fecha);
+      
+      objetoPersonas.personas.push({
+        nombre: nombre,
+        apellido: apellido,
+        fechaNac: fecha
+      });
+
+      document.getElementById("nombre").value = "";
+      document.getElementById("apellido").value = "";
+      document.getElementById("fecha").value = "";
+    }
+
+    function mostrarPersonas() {
+      const presentacion = document.getElementById("presentacion");
+      presentacion.innerHTML = ""; 
+
+      let html = "<h3>Presentación de Personas</h3>";
+      html += "<table>";
+      html += "<tr><th>Nombre</th><th>Apellido</th><th>Fecha de Nacimiento</th></tr>";
+
+      objetoPersonas.personas.forEach(function(item, indice) {
+        html += `<tr>
+                   <td>${item.nombre}</td>
+                   <td>${item.apellido}</td>
+                   <td>${item.fechaNac}</td>
+                 </tr>`;
+      });
+
+      html += `<tr>
+                 <td colspan='3'>Total de personas: ${objetoPersonas.personas.length}</td>
+               </tr>`;
+      html += "</table>";
+
+      presentacion.innerHTML = html;
+      presentacion.style.display = "block";
+    }
+
+    function ocultarPresentacion() {
+      document.getElementById("presentacion").style.display = "none";
+    }
+  </script>
+</body>
+</html>
