@@ -70,13 +70,10 @@
   const btnModi = document.getElementById("btnModi");
   const btnBaja = document.getElementById("btnBaja");
 
-  // Función para validar botones
   function validarFormulario() {
-    // Si hay algo escrito en cualquier input → habilitamos Blanquear
     const hayTexto = [...form.querySelectorAll("input")].some(input => input.value.trim() !== "");
     btnBlanquear.disabled = !hayTexto;
 
-    // Si todo el formulario es válido → habilitamos ABM
     if (form.checkValidity()) {
       btnAlta.disabled = false;
       btnModi.disabled = false;
@@ -88,18 +85,15 @@
     }
   }
 
-  // Eventos keyup en inputs
   document.getElementById("apellido").addEventListener("keyup", validarFormulario);
   document.getElementById("nombres").addEventListener("keyup", validarFormulario);
   document.getElementById("saldo").addEventListener("keyup", validarFormulario);
 
-  // Botón Blanquear
   btnBlanquear.addEventListener("click", () => {
     form.reset();
     validarFormulario();
   });
 
-  // Botones ABM → abren páginas en nueva pestaña
   btnAlta.addEventListener("click", () => {
     window.open("alta.html", "_blank");
   });
@@ -113,3 +107,4 @@
 
 </body>
 </html>
+
