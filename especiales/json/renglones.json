@@ -1,0 +1,47 @@
+[
+  {
+    "NroFactura": 1001,
+    "Cod_articulo": "A001",
+    "Descripcion": "Remera blanca",
+    "UnidadDeMedida": "UN",
+    "Cantidad": 2,
+    "Precio_Unitario": 32990.00,
+    "Importe_Renglon": 65980.00
+  },
+  {
+    "NroFactura": 1001,
+    "Cod_articulo": "A002",
+    "Descripcion": "Pantalón jean clásico",
+    "UnidadDeMedida": "UN",
+    "Cantidad": 1,
+    "Precio_Unitario": 39999.00,
+    "Importe_Renglon": 39999.00
+  },
+  {
+    "NroFactura": 1002,
+    "Cod_articulo": "A003",
+    "Descripcion": "Tapado de paño",
+    "UnidadDeMedida": "UN",
+    "Cantidad": 1,
+    "Precio_Unitario": 68586.00,
+    "Importe_Renglon": 68586.00
+  },
+  {
+    "NroFactura": 1002,
+    "Cod_articulo": "A004",
+    "Descripcion": "Botas negras",
+    "UnidadDeMedida": "PAR",
+    "Cantidad": 1,
+    "Precio_Unitario": 119999.00,
+    "Importe_Renglon": 119999.00
+  },
+  {
+    "NroFactura": 1002,
+    "Cod_articulo": "A005",
+    "Descripcion": "Gorra gris",
+    "UnidadDeMedida": "UN",
+    "Cantidad": 1,
+    "Precio_Unitario": 34990.00,
+    "Importe_Renglon": 34990.00
+  }
+]
