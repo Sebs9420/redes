@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3: esp15 Ventana Modal</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .modal-contenido {
+      background: #fff;
+      margin: 5% auto;
+      padding: 10px;
+      border-radius: 8px;
+      width: 80%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-contenido iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+    }
+
+    .cerrar {
+      align-self: flex-end;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      color: red;
+      margin-bottom: 10px;
+    }
+
+    #contenedorGlobal.desactivado {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+  <div id="contenedorGlobal">
+    <h2>Ejercicio 3 - Ventana Modal</h2>
+    <button id="btnAbrir">Abrir formulario</button>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-contenido">
+      <span id="btnCerrar" class="cerrar">&times;</span>
+      <iframe src="../esp05FormVariableArregloDeObjetos/index.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    alert("Ancho de ventana: " + window.innerWidth);
+
+    const modal = document.getElementById("modal");
+    const btnAbrir = document.getElementById("btnAbrir");
+    const btnCerrar = document.getElementById("btnCerrar");
+    const contenedor = document.getElementById("contenedorGlobal");
+
+    btnAbrir.addEventListener("click", () => {
+      modal.style.display = "block";
+      contenedor.classList.add("desactivado");
+    });
+
+    btnCerrar.addEventListener("click", () => {
+      modal.style.display = "none";
+      contenedor.classList.remove("desactivado");
+    });
+  </script>
+</body>
+</html>

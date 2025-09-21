@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1: esp05 Formulario Variable</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="renglones.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Formulario de ALTA <br> Factura de Ventas</h1>
+  </header>
+
+  <main>
+    <form class="form-container" method="GET" action="respuesta.html">
+      <div class="campo">
+        <label for="nroFactura">NroFactura:</label>
+        <input type="number" id="nroFactura" name="nroFactura" required>
+      </div>
+
+      <div class="campo">
+        <label for="categoria">Categoría de Artículo:</label>
+        <select id="categoria" name="categoria" required>
+          <option value="">Cargando...</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="codArt">Cod_articulo:</label>
+        <input type="text" id="codArt" name="codArt" required>
+      </div>
+
+      <div class="campo">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required>
+      </div>
+
+      <div class="campo">
+        <label for="um">Unidad de Medida:</label>
+        <input type="text" id="um" name="unidadDeMedida" required>
+      </div>
+
+      <div class="campo">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+      </div>
+
+      <div class="campo">
+        <label for="fechaAlta">Fecha de Alta:</label>
+        <input type="date" id="fechaAlta" name="fechaAlta" required>
+      </div>
+
+      <div class="campo">
+        <label for="precio">Precio Unitario:</label>
+        <input type="number" id="precio" name="precioUnitario" step="0.01" min="0" required>
+      </div>
+
+      <div class="boton-wrap">
+        <button type="submit">ENVIAR</button>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    Programación en ambiente de redes 2025 - Alumno: Sebastián Jofré - Mail: sebastian.jofre@comunidad.ub.edu.ar
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const selectCategoria = document.getElementById("categoria");
+      const renglones = JSON.parse(textoRenglones).renglones;
+      selectCategoria.innerHTML = "";
+      const categoriasUnicas = new Set();
+      renglones.forEach(r => {
+        if (r.Categoria && !categoriasUnicas.has(r.Categoria)) {
+          categoriasUnicas.add(r.Categoria);
+          const option = document.createElement("option");
+          option.value = r.Categoria;
+          option.textContent = r.Categoria;
+          selectCategoria.appendChild(option);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

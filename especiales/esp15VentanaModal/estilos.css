@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: lightblue;
+}
+
+#contenedorGlobal.activo {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+#contenedorGlobal.desactivado {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.5); 
+}
+
+.modal-contenido {
+  background: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+
+.modal-header, .modal-footer {
+  background: #ccc;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.cerrar {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+  color: red;
+}
+

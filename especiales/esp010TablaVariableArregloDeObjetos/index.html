@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2: esp010: Tabla Variable</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="renglones.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Renglones de Facturas</h1>
+    <div class="acciones">
+      <button id="btnCargar">Cargar datos</button>
+      <button id="btnVaciar">Vaciar datos</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="tabla-container">
+      <table>
+        <thead>
+          <tr>
+            <th>NroFactura</th>
+            <th>CodArt</th>
+            <th>Categoría</th>
+            <th>UM</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Fecha Alta</th>
+            <th>Precio Unitario</th>
+            <th>Importe Renglón</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyArticulos">
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td id="sumFactura">-</td>
+            <td id="sumCodArt">-</td>
+            <td id="sumCategoria">-</td>
+            <td id="sumUM">-</td>
+            <td id="sumDescripcion">-</td>
+            <td id="sumCantidad">0</td>
+            <td id="sumFecha">-</td>
+            <td id="sumPrecio">0.00</td>
+            <td id="sumImporte">0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    Programación en ambiente de redes 2025 - Alumno: Sebastián Jofré - Mail: sebastian.jofre@comunidad.ub.edu.ar
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tbody = document.getElementById("tbodyArticulos");
+      const btnCargar = document.getElementById("btnCargar");
+      const btnVaciar = document.getElementById("btnVaciar");
+
+      function formatearFecha(fechaStr) {
+        if (!fechaStr || fechaStr.length !== 8) return "-";
+        const año = fechaStr.substring(0, 4);
+        const mes = fechaStr.substring(4, 6);
+        const dia = fechaStr.substring(6, 8);
+        return `${año}-${mes}-${dia}`;
+      }
+
+      btnCargar.addEventListener("click", () => {
+        const renglones = JSON.parse(textoRenglones).renglones;
+        tbody.innerHTML = "";
+        let totalCantidad = 0;
+        let totalPrecio = 0;
+        let totalImporte = 0;
+
+        renglones.forEach(art => {
+          const tr = document.createElement("tr");
+
+          tr.innerHTML = `
+            <td>${art.NroFactura}</td>
+            <td>${art.Cod_articulo}</td>
+            <td>${art.Categoria || "-"}</td>
+            <td>${art.UnidadDeMedida}</td>
+            <td>${art.Descripcion}</td>
+            <td>${art.Cantidad}</td>
+            <td>${formatearFecha(art.FechaAlta)}</td>
+            <td>${art.Precio_Unitario.toFixed(2)}</td>
+            <td>${art.Importe_Renglon.toFixed(2)}</td>
+          `;
+
+          tbody.appendChild(tr);
+          totalCantidad += art.Cantidad;
+          totalPrecio += art.Precio_Unitario;
+          totalImporte += art.Importe_Renglon;
+        });
+
+        document.getElementById("sumCantidad").textContent = totalCantidad;
+        document.getElementById("sumPrecio").textContent = totalPrecio.toFixed(2);
+        document.getElementById("sumImporte").textContent = totalImporte.toFixed(2);
+      });
+
+      btnVaciar.addEventListener("click", () => {
+        tbody.innerHTML = "";
+        document.getElementById("sumCantidad").textContent = "0";
+        document.getElementById("sumPrecio").textContent = "0.00";
+        document.getElementById("sumImporte").textContent = "0.00";
+      });
+    });
+  </script>
+</body>
+</html>
