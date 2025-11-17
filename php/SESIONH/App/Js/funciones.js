@@ -1,4 +1,5 @@
 let ordenActual = "Cod_articulo";
+let selectOrden; 
 let modoFormulario = "alta"; 
 let codArticuloSeleccionado = "";
 let modalFormulario, modalRespuesta, spanClose, spanCloseRespuesta, formArticulo, tbody;
@@ -136,6 +137,8 @@ window.addEventListener('load', function() {
   formArticulo = document.getElementById('formArticulo');
   btnEnviar = document.getElementById('btnEnviar');
   tbody = document.getElementById('tbody');
+  selectOrden = document.getElementById('ordenSelect');
+  if (selectOrden) selectOrden.value = ordenActual;
   
   pintarOrden();
   cargarUnidades();
@@ -149,6 +152,12 @@ function configurarEventos() {
       pintarOrden();
     });
   });
+  if (selectOrden) {
+    selectOrden.addEventListener('change', function(){
+      ordenActual = this.value;
+      pintarOrden();
+    });
+  }
 
   // Botones 
   document.getElementById('btnCargar').addEventListener('click', () => cargarDatos(false));
@@ -183,7 +192,11 @@ function configurarEventos() {
 }
 
 function pintarOrden() {
-  document.getElementById('ordenActualSpan').innerHTML = ordenActual;
+  var span = document.getElementById('ordenActualSpan');
+  if (span) span.innerHTML = ordenActual;
+  if (selectOrden && selectOrden.value !== ordenActual) {
+    selectOrden.value = ordenActual;
+  }
 }
 
 function cargarUnidades() {
@@ -262,7 +275,7 @@ function vaciarTabla() {
 
 function limpiarFiltros() {
   ordenActual = 'Cod_articulo';
-  document.getElementById('ordenActualSpan').textContent = 'Cod_articulo';
+  pintarOrden();
 }
 
 function abrirFormularioAlta() {
@@ -525,4 +538,6 @@ function cerrarSesion() {
     window.location.href = '../destruirSesion.php';
   }
 }
+
+
 
