@@ -21,7 +21,20 @@ header("Expires: 0");
   <header>
     <h1>Consulta de Renglones</h1>
     <div class="acciones">
-      <span style="margin-right:10px">Usuario: <strong><?php echo htmlspecialchars($_SESSION['login']); ?></strong> | Orden: <strong id="ordenActualSpan">Cod_articulo</strong></span>
+      <span style="margin-right:10px">
+        Usuario: <strong><?php echo htmlspecialchars($_SESSION['login']); ?></strong> |
+        Orden:
+        <select id="ordenSelect" style="margin-left:4px;">
+          <option value="Cod_articulo">Cod_articulo</option>
+          <option value="NroFactura">NroFactura</option>
+          <option value="Categoria">Categoria</option>
+          <option value="UnidadDeMedida">UnidadDeMedida</option>
+          <option value="Descripcion">Descripcion</option>
+          <option value="FechaAlta">FechaAlta</option>
+          <option value="Cantidad">Cantidad</option>
+        </select>
+        <strong id="ordenActualSpan" style="display:none">Cod_articulo</strong>
+      </span>
       <button id="btnCargar">Cargar datos</button>
       <button id="btnVaciar">Vaciar datos</button>
       <button id="btnLimpiarFiltros">Limpiar filtros</button>
@@ -142,3 +155,5 @@ header("Expires: 0");
   <script src="Js/funciones.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>
+
+
