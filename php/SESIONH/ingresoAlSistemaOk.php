@@ -8,7 +8,6 @@ include('manejoSesion.inc');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ingreso al Sistema</title>
   <style>
-    /* Muy básico, acorde al formulario de login */
     html,body{height:100%;margin:0;padding:0}
     body{background:#3498db;font-family:Arial, Helvetica, sans-serif}
 
@@ -39,3 +38,4 @@ include('manejoSesion.inc');
   </div>
 </body>
 </html>
+
